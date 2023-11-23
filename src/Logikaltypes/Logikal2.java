@@ -14,7 +14,7 @@ public class Logikal2 {
         System.out.printf("1 - a=b!=c %b\n",a==b&&a!=c||b!=c);
         System.out.printf("2 - b>a||c>a %b\n",b>a||c>a);
         System.out.printf("3 - a>=b&&b<=c %b\n",a>=b&&b<=c);
-        System.out.printf("4 - a!=b&b!=c&c!=a %b\n",a!=b&&b!=c&&c!=a);
+        System.out.printf("4 - a!=b&b!=c %b\n",a!=b&&b!=c);
         System.out.printf("5 - a%%2==0&b%%2!=0&c<0 %b\n",((a%2)==0)&&((b%2)!=0)&&c<0);
 
     }
