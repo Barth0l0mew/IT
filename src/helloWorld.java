@@ -2,7 +2,7 @@ public class helloWorld {
 
     public static void main (String[] args){
         String temp="Hello";
-        System.out.println ("HelloWorld");
+        System.out.println ("Hello\u0020World");
         System.out.println("Привет");
         System.out.printf("%s",temp);
 

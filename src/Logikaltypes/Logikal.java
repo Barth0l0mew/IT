@@ -1,4 +1,4 @@
-package datatypes;
+package Logikaltypes;
 
 public class Logikal {
     public static void main(String[] args) {

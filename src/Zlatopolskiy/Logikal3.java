@@ -1,4 +1,4 @@
-package Logikaltypes;
+package Zlatopolskiy;
 
 public class Logikal3 {
     public static void main(String[] args) {

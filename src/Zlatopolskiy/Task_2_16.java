@@ -1,4 +1,4 @@
-package datatypes;
+package Zlatopolskiy;
 
 public class Task_2_16 {
     public static void main(String[] args) {

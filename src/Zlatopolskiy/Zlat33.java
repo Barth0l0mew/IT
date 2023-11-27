@@ -1,4 +1,4 @@
-package datatypes;
+package Zlatopolskiy;
 
 public class Zlat33 {
     public static void main(String[] args) {
