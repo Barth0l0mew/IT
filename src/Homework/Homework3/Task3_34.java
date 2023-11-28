@@ -20,6 +20,8 @@ public class Task3_34 {
 она может одним ходом попасть на поле (c, d):
 при обычном ходе;
 когда она "бьет" фигуру или пешку соперника.
+ж) На поле (a, b) расположен конь. Записать условие, при котором он угрожает полю (c, d)
+
      */
     public static void main(String[] args) {
         int x1=8, y1=1;
@@ -98,5 +100,14 @@ public class Task3_34 {
             System.out.println("Пешка бъет");
         else
             System.out.println("Пешка не так не бъет");
+        System.out.println("Задача ж:");
+        x1=7;
+        y1=3;
+        x2=6;
+        y2=6;
+        if ((Math.abs(x1-x2)==1&&Math.abs(y1-y2)==2)||(Math.abs(x1-x2)==2&&Math.abs(y1-y2)==1))
+            System.out.println("Конь угрожает с места");
+        else
+            System.out.println("Конь не угрожает");
     }
 }

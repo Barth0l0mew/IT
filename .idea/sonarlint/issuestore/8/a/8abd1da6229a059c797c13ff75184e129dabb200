@@ -1,0 +1,13 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(×äšf
+;
+java:S1659" Declare "y1" on a separate line.(·ÃŞ‚üÿÿÿÿ
+;
+java:S1659" Declare "y2" on a separate line.(î°ïÃùÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(…ùŸàıÿÿÿÿ
+?	java:S106
+"+Replace this use of System.out by a logger.(À®ù
+@	java:S106"+Replace this use of System.out by a logger.(º»Â
+@	java:S106"+Replace this use of System.out by a logger.(ÛØ›‚
+@	java:S106"+Replace this use of System.out by a logger.(›ò‡Ü
+@	java:S106"+Replace this use of System.out by a logger.(ÛØ›‚
