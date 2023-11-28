@@ -102,7 +102,7 @@ public class Task3_34 {
             System.out.println("Пешка не так не бъет");
         System.out.println("Задача ж:");
         x1=7;
-        y1=3;
+        y1=4;
         x2=6;
         y2=6;
         if ((Math.abs(x1-x2)==1&&Math.abs(y1-y2)==2)||(Math.abs(x1-x2)==2&&Math.abs(y1-y2)==1))
