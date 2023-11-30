@@ -15,9 +15,10 @@ public class Task6 {
     public static void main(String[] args) {
         System.out.print("Input eyers = ");
         Scanner scan = new Scanner(System.in);
-        int eyers=scan.nextInt();
+        int eyers=2000;
+        //int eyers=scan.nextInt();
 
-        if (eyers%4==0&&eyers%100!=0)
+        if (eyers%4==0&&eyers%100!=0 || eyers%400==0)
             System.out.println(eyers+" - day - "+366);
         else System.out.println(eyers+" - day - "+365);
     }

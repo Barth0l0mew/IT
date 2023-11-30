@@ -13,16 +13,22 @@ public class Task5 {
 Год: Тигра
      */
     public static void main(String[] args) {
-        String[] eyersName ={"Крыса","Бык","Тигр","Кролик","Дракон","Змея","Лошадь","Овца","Обезьяна","Петух","Собака","Свинья"};
-        int eyersStart=1900;
+        String[] yearName ={"Крыса","Бык","Тигр","Кролик","Дракон","Змея","Лошадь","Овца","Обезьяна","Петух","Собака","Свинья"};
+        int yearStart=1900;
         int index;
         Scanner scan = new Scanner(System.in);
         int day= scan.nextInt();
         int month= scan.nextInt();
-        int eyers= scan.nextInt();
-        System.out.println(day+" "+month+" "+eyers);
-        index=(eyers-eyersStart)%12;
-        System.out.println("Год: "+eyersName[index]);
+        int year= scan.nextInt();
+        System.out.println(day+" "+month+" "+year);
+        //index=(year-yearStart)%12;
+        if (year>=yearStart){
+            index = (year-yearStart)%12;
+        }
+        else {
+            index = 12-(yearStart-year)%12;
+        }
+        System.out.println("Год: "+yearName[index]);
         switch (month){
             case 1:{
                 if (day<=20)
