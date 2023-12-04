@@ -13,7 +13,10 @@ public class Task4_36 {
         System.out.print("Input time:");
         Scanner scan = new Scanner(System.in);
         double t=scan.nextDouble();
-        if (t%(2+3)>3) System.out.println("Red");
+        if (t%(2+3)>=3) System.out.println("Red");
         else System.out.println("Green");
+        for (int i=1;i<100; i++)
+            if (i%(2+3)>=3) System.out.println("Red");
+            else System.out.println("Green");
     }
 }
