@@ -15,6 +15,7 @@ public class Ladder {
             j++;
 
         }
+        System.out.println(Math.sin(Math.toRadians(45)));
 
 
     }
