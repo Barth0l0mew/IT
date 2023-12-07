@@ -15,10 +15,21 @@ public class Cat {
         while (len<50) {
             step=random.nextInt(3)+5;
             len+=step;
-            i++;
+            ++i;
             if (len>=50) len=50;
             System.out.printf("%d %d %d \n",i,step,len);
+
         }
+        int sum=0,j=1;
+        //sum=j++;
+        //sum=j;
+        //j=j+1;
+        sum=++j;
+
+        //j=j+1;
+        //sum=j;
+        System.out.printf("%d %d",sum, j);
+
 
     }
 }
