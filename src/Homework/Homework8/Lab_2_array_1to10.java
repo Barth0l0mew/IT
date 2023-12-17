@@ -3,22 +3,26 @@ package Homework.Homework8;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Lab_2_array {
+public class Lab_2_array_1to10 {
 
     public static void main(String[] args) {
-//        System.out.println(0%2==0);
-//        System.out.println(Arrays.toString(fillUp(5)));
-//        System.out.println(Arrays.toString(fillRandom(10)));
-       // Exercise_1(fillUp(10));
-        //Exercise_1(fillRandom(10));
-        //Exercise_2(fillR(10));
-       // Exercise_3(fillR(10));
-       // Exercise_4(fillRandom(10));
-        //Exercise_5(fillRandom(10));
+        Exercise_1(fillUp(10));
+        Exercise_1(fillRandom(10));
+        Exercise_2(fillR(10));
+        Exercise_3(fillR(10));
+        Exercise_4(fillRandom(10));
+        Exercise_5(fillRandom(10));
         int[] ex6_arr={0,2,4,6,3,-1,1};
         int[] ex6_in={4,6,3};
         System.out.println("result="+Exercise_6(ex6_arr,ex6_in));
-
+        int[] test = {-2,1,2,-2,1,2,3,-3,1,2,3,4};
+        Exercise_7(test);
+        Exercise_7(fillRInt(10));
+        Exercise_8(fillRInt(10));
+        int[] test2={1,1,2,2,2,3,4,5,7};
+        Exercise_8(test2);
+        Exercise_9(fillRInt(10));
+        Exercise_10(fillRandom(10),25);
 
     }
     static int[] fillUp (int size){
@@ -48,6 +52,16 @@ public class Lab_2_array {
             arr[i]=Math.random()*100;
             //выделения числа с 2 знаками после запятой
             arr[i]=1.*Math.round(arr[i]*100)/100;
+            //знак минус в числах
+            if (Math.random()*10>5) arr[i]*=-1;
+        }
+        return arr;
+    }
+    static  int[] fillRInt (int size){
+        int[] arr = new int[size];
+        for (int i=0; i<size;i++){
+            arr[i]=(int) (Math.random()*100);
+
             //знак минус в числах
             if (Math.random()*10>5) arr[i]*=-1;
         }
@@ -172,7 +186,97 @@ public class Lab_2_array {
         }
         return result;
     }
+    static void Exercise_7 (int[] arr){
+        System.out.println("Exercise - 7");
+        System.out.println(Arrays.toString(arr));
+        int startindex=0;
+        int count=0;
+        int tempIndex=0,tempCount=0;
+        for (int i=0; i<arr.length;i++){
+            if (arr[i]>=0){
+                tempCount++;
+                if ( i==(arr.length-1)){
 
+                    if (tempCount>=count){
+                        count=tempCount;
+                        startindex=i+1;
+                    }
+                }
+            }else if (arr[i]<0 ) {
+                tempIndex=i;
+                if (tempCount>=count){
+                    count=tempCount;
+                    startindex=tempIndex;
+                }
+                tempCount=0;
+            }
+            //System.out.printf("i=%d startIndex=%d count=%d\n",i,startindex,count);
 
+        }
+        for (int i=startindex-count;i<startindex;i++)
+            System.out.print(arr[i]+" ");
+        System.out.println();
 
+    }
+    static void Exercise_8(int[]arr ){
+        int count=0, tempCount=0,number=0,tempNumber=0,key=0;
+        System.out.println("Exercise - 8");
+        System.out.println(Arrays.toString(arr));
+        for (int element:arr){
+            count=0;
+            for (int j=0; j<arr.length;j++){
+                if (element==arr[j]){
+                   count++;
+                   number=element;
+                }
+            }
+            if (count>tempCount){
+                tempCount=count;
+                tempNumber=number;
+                if (count>=2) {
+                    key++;
+                    System.out.printf("Number=%d count=%d\n", tempNumber, tempCount);
+                }
+            }
+        }
+        System.out.printf("Repeat key=%d\n",key);
+    }
+    static void Exercise_9(int[]arr){
+        System.out.println("Exercise - 9");
+        System.out.println(Arrays.toString(arr));
+        int sum=0,count=0;
+        for(int element:arr){
+            if (element>=0){
+                sum+=element;
+                count++;
+            }
+        }
+        System.out.printf("arithmetic=%.2f\n",(1.0*sum/count));
+        for (int element:arr){
+            if (element<(1.0*sum/count))
+                System.out.print(element+" ");
+        }
+        System.out.println();
+    }
+    static void Exercise_10(int[] arr, int y){
+        System.out.println("Exercise - 10");
+        System.out.println(Arrays.toString(arr));
+        System.out.println("y="+y);
+        double arith=0.0,temp=1.0*(arr[0]+arr[1])/2;
+        int number1=arr[0],number2=arr[1];
+        for (int i=1;i<arr.length-1;i++){
+            for (int j=i+1;j<arr.length;j++){
+                arith=1.0*(arr[i]+arr[j])/2;
+                //System.out.printf("1-%d 2-%d arith=%.2f y-arith=%.2f\n",arr[i],arr[j],arith,Math.abs(arith-y));
+                if (Math.abs(arith-y)<=Math.abs(temp-y)){
+                    number1=arr[i];
+                    number2=arr[j];
+                    temp=arith;
+
+                }
+            }
+
+        }System.out.printf("Number1=%d number2=%d\n",number1,number2);
+
+    }
 }
