@@ -1,5 +1,6 @@
 package Homework.Homework8;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -23,6 +24,14 @@ public class Lab_2_array_1to10 {
         Exercise_8(test2);
         Exercise_9(fillRInt(10));
         Exercise_10(fillRandom(10),25);
+        int[] test3={2,7,3,11,3,7,2};
+        Exercise_11(test3);
+        int[] test4={2,7,3,11,11,3,7,2};
+        Exercise_11(test4);
+        int[] test5={2,7,4,11,3,7,2};
+        Exercise_11(test5);
+        int[] test6={2,7,4,11,11,3,7,2};
+        Exercise_11(test6);
 
     }
     static int[] fillUp (int size){
@@ -278,5 +287,22 @@ public class Lab_2_array_1to10 {
 
         }System.out.printf("Number1=%d number2=%d\n",number1,number2);
 
+    }
+    static void Exercise_11(int[]arr){
+        System.out.println("Exercise - 11");
+        System.out.println(Arrays.toString(arr));
+        boolean flag=true;
+            for(int i=0;i<arr.length/2;i++){
+                if (arr[i]!=arr[arr.length-1-i]&&!isPrime(arr[i]))
+                    flag=false;
+            }
+        System.out.println("Simetric prime resul="+flag);
+    }
+    static boolean isPrime(int n){
+        boolean flag=true;
+        for (int i=2;i<n;i++)
+            if (n%i==0)
+                flag=false;
+        return flag;
     }
 }
