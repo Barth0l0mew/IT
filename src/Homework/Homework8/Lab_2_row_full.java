@@ -66,8 +66,9 @@ public class Lab_2_row_full {
         int i=2;
         double sum=a*(2+x);
         while (Math.abs(a)>EXP){
-            a*=-x*x/(2*i*(2*i-1));
+           a*=-x*x/(2*i*(2*i-1));
             sum+=a*(2*i+x);
+
           //  System.out.printf("%d %.7f %.5f\n",i,a,sum);
             i++;
         }
