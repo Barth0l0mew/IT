@@ -1,0 +1,175 @@
+package Temp.Homework9;
+
+import java.util.Scanner;
+
+public class Bookcase {
+    public static void main(String[] args) {
+        Scanner scan =  new Scanner(System.in);
+        Book book = new Book("a",2020,"b","title",200);
+        Book book2 = new Book("a",2020,"b","title",200);
+        Book book3 = new Book("b");
+        System.out.println(book);
+        System.out.println(book2);
+        System.out.println(book3.toString());
+       while (true){
+           menu();
+           int level= scan.nextInt();
+           switch(level){
+               case 1:
+                   add();
+                   break;
+               case 2:
+                   break;
+               case 3:
+                   break;
+               case 4:
+                   break;
+               default:
+                   menu();
+           }
+           if (level==4) break;
+       }
+    }
+    static void clearScrean (){
+        System.out.flush();
+    }
+    static void add (){
+        Book newBook;
+        Scanner scan = new Scanner(System.in);
+        clearScrean();
+        System.out.print("Input Book name = ");
+        String name = scan.nextLine();
+        name = name.isBlank()?"No name":name;
+        System.out.print("\nInput Book year = ");
+        String year = scan.nextLine();
+        year=year.isBlank()?"No year":year;
+        System.out.print("\nInput book author = ");
+        String author = scan.nextLine();
+        author = author.isBlank()?"No author":author;
+        System.out.print("\nInput book title = ");
+        String title = scan.nextLine();
+        title = title.isBlank()?"No title":author;
+        System.out.println("\nInput book price = ");
+        String price = scan.nextLine();
+        price = price.isBlank()?"No price":price;
+        if (!year.equals("No year") && !author.equals("No author")&& !title.equals("No title")&& !price.equals("No price")) {
+            newBook = new Book(name, Integer.parseInt(year), author, title, Integer.parseInt(price));
+            System.out.println(newBook);
+        }
+
+    }
+    static void menu (){
+        clearScrean();
+        System.out.println("1-add book");
+        System.out.println("2-delete book");
+        System.out.println("3-to String book");
+        System.out.println("4-Exit");
+        System.out.println("Input level = ");
+    }
+}
+class Book{
+    //private Date current = new Date ();
+    private static int currentYear =0;
+    //Объявление полей для объектов книг
+    private int id;
+    private String name;
+    private int year;
+    private String author;
+    private String title;
+    private int price=150;
+    //Объявление статической переменной для класса BOOK
+    private static int count;
+    // блок инитиализации
+    static {
+        count=0;
+    }
+
+    public Book(String name, int year, String author, String title, int price) {
+        this.id=count;
+        this.name=name;
+        this.year=year;
+        this.author=author;
+        this.title=title;
+        this.price=price;
+        count++;
+    }
+    public Book(String name, int year, String title, int price) {
+        this.id=count;
+        this.name=name;
+        this.year=year;
+        this.author="UNKNOWN";
+        this.title=title;
+        this.price=price;
+        count++;
+    }
+    public Book(String name, int year, int price) {
+        this.id=count;
+        this.name=name;
+        this.year=year;
+        this.author="No Author";
+        this.title="No Title";
+        this.price=price;
+        count++;
+    }
+    public Book(String name, int price) {
+        this.id=count;
+        this.name=name;
+        this.year=currentYear;
+        this.author="No Author";
+        this.title="No Title";
+        this.price=price;
+        count++;
+    }
+    public Book(String name) {
+        this.id=count;
+        this.name=name;
+        this.year=currentYear;
+        this.author="No Author";
+        this.title="No Title";
+
+        count++;
+    }
+
+    public int getId (){
+        return this.id;
+    }
+    public String getName (){
+        return this.name;
+    }
+    public int getYear (){
+        return this.year;
+    }
+    public String getAuthor (){
+        return this.author;
+    }
+    public String getTitle (){
+        return this.title;
+    }
+    public int getPrice (){
+        return this.price;
+    }
+    public void setPrice (int price){
+        this.price=price;
+    }
+    public void setYear (int year){
+        this.year=year;
+    }
+    public void setAuthor (String author){
+        this.author=author;
+    }
+    public void setTitle (String title){
+        this.title=title;
+    }
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+}
