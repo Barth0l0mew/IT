@@ -22,6 +22,7 @@ public class Arrays2D {
         System.out.println(Arrays.deepToString(arr2));
         System.out.println(Arrays.deepToString(arr2));
         run(arr2);
+        run2(arr2);
     }
     static void fill (int[][] arr){
         Random random = new Random();
@@ -65,6 +66,22 @@ public class Arrays2D {
             i++;
             if (i<arr.length && j<arr[i].length)
             System.out.println(arr[i][j]);
+            else break;
+        }
+    }
+    static void run2 (int[][] arr){
+        int i=0, j=0;
+        while (i<=arr.length || j<=arr[i].length){
+            if (i<arr.length && j<arr[i].length) {
+                System.out.println(arr[i][j]);
+                i++;
+            }
+            else break;
+
+            if (i<arr.length && j<arr[i].length) {
+                System.out.println(arr[i][j]);
+                i--;j++;
+            }
             else break;
         }
     }
