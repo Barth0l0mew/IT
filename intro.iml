@@ -7,6 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="number2words-0.2" level="project" />
+    <orderEntry type="library" name="github.javadev.moneytostr" level="project" />
+    <orderEntry type="library" name="io.whelk.hy.phen.a.tion" level="project" />
+    <orderEntry type="library" name="invitrode-12e5d68" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="d1625236-045d-410b-ab1a-174b9de8eff3" />
