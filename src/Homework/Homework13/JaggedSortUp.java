@@ -1,9 +1,9 @@
-package Arrays_temp.Jagged;
+package Homework.Homework13;
 
 import java.util.Arrays;
 import java.util.Random;
 
-public class JaggedSort {
+public class JaggedSortUp {
     /*
     отсортировать по количеству элементов подмассива
      */
