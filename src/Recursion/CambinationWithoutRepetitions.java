@@ -21,7 +21,6 @@ public class CambinationWithoutRepetitions {
             System.out.println(sb);
             return;
         }
-
         for (int i=0; i<n; i++){
             sb.append(s.charAt(i));
             combinations(sb,n,r);
