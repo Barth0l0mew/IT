@@ -24,6 +24,8 @@ public class Recursion {
 Выведите все возможные комбинации такого выбора.
 
 */
+    static StringBuilder sb= new StringBuilder();
+    static int[] menu4 = new int[7];
     public static void main(String[] args) {
         int[] arr = fillArr(3);
         //swap(arr,2,4);
@@ -38,8 +40,13 @@ public class Recursion {
          String[] firstDishes = {"Суп", "Салат"};
          String[] secondDishes = {"Стейк", "Паста", "Рыба"};
          String[] thirdDishes = {"Десерт", "Фрукты"};
+        //String[][] menu2 = {{"борщ","Щи"},{"Пюрэ","",""},{}}
+        int[][] menu3 = {{1,2},{3,4,5},{6,7}};
 
-         List<List<String>> combinations = combineMenu(firstDishes, secondDishes, thirdDishes);
+        for (int i=0;i<menu4.length;i++)
+            menu4[i]=i;
+        combinationMenu(sb,0);
+        List<List<String>> combinations = combineMenu(firstDishes, secondDishes, thirdDishes);
 
          for (List<String> combination : combinations) {
              System.out.println(combination);
@@ -61,7 +68,23 @@ public class Recursion {
 
 
     }
+    static void combinationMenu (StringBuilder sb, int start){
+        if (sb.length()==2 && correct2(sb))
+            System.out.println(sb);
+        for (int i=start;i<menu4.length;i++){
+            sb.append(menu4[i]);
+            combinationMenu(sb,i+1);
+            sb.delete(sb.length()-1,sb.length());
+        }
+    }
+     static boolean correct2 (StringBuilder sb){
 
+        if (sb.charAt(0)=='0' && sb.charAt(1)=='1') return false;
+        if (sb.charAt(0)=='2' && sb.charAt(1)=='3') return false;
+        if (sb.charAt(0)=='3' && sb.charAt(1)=='4') return false;
+        if (sb.charAt(0)=='5' && sb.charAt(1)=='6') return false;
+        return true;
+    }
     static int[] fillArr(int len) {
         int[] arr = new int[len];
         for (int i = 0; i < len; i++)
@@ -110,6 +133,7 @@ public class Recursion {
             }
 
     }
+
 
     public static List<List<String>> combineMenu(String[] firstDishes, String[] secondDishes, String[] thirdDishes) {
         List<List<String>> combinations = new ArrayList<>();
