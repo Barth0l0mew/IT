@@ -11,6 +11,7 @@ public class CambinationWithoutRepetitions {
     static void combination (StringBuilder sb, int start){
         System.out.println(sb);
         for ( int i=start;i<n;i++) {
+
             sb.append(s.charAt(i));
             combination(sb, i + 1);
             sb.delete(sb.length()-1,sb.length());
