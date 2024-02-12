@@ -1,8 +1,10 @@
 package Homework.Homework15;
 
+import OOP.Students.Students;
+
 import java.util.Random;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
     private int id;
     private String name;
     private String firstName;
@@ -106,5 +108,12 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        System.out.println("CompareTo");
+        return this.getFirstName().compareTo(o.getFirstName());
+        //return 0;
     }
 }

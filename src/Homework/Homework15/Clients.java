@@ -18,10 +18,13 @@ public class Clients {
         customer.add(new Customer("Ivan","Ivanov","Ivanovich"));
         customer.add(new Customer("Jon","Smith"));
         customer.add(new Customer("Jan","Richard"));
+        customer.add(new Customer("Sun","Fracle"));
         System.out.println("--------------CustomBD-------------");
         print(customer);
-        System.out.println("-----------------Sort-----------------");
+        System.out.println("-----------------SortFerstName-----------------");
         sort(customer);
+        System.out.println("-----------------SortName-----------------");
+        sort2(customer);
         System.out.println("----------------FoundNumberCard----------");
         foundNumberCard(customer,"[4-6]\\d{8}");
     }
@@ -33,6 +36,12 @@ public class Clients {
         List<Customer> tempList = new ArrayList<>(customer);
         Comparator<Customer> compFirstName=Comparator.comparing(obj->obj.getFirstName());
         Collections.sort(tempList,compFirstName);
+        print(tempList);
+    }
+    public  static void sort2 (List<Customer> customer){
+        List<Customer> tempList = new ArrayList<>(customer);
+        Comparator<Customer> compName=Comparator.comparing(obj->obj.getName());
+        Collections.sort(tempList,compName);
         print(tempList);
     }
     public static void foundNumberCard(List<Customer> customer, String regx){

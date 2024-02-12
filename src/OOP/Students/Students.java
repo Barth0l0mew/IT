@@ -85,6 +85,7 @@ class Student implements Comparable<Student>{
 
     @Override
     public int compareTo(Student o) {
+        System.out.println("CompareTO");
         return this.surname.compareTo(o.surname);
     }
 }
