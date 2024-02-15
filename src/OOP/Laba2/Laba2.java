@@ -8,7 +8,7 @@ public class Laba2 {
         1. Имеется список книг.
         Вывести книги до определенного года издания и в отсортированном порядке.
          */
-        ArrayList<Book> books = new ArrayList<>();
+        List<Book> books = new ArrayList<>();
         books.add(new Book("War and Peace", 1992));
         books.add(new Book("Harry Potter",2005));
         books.add(new Book("Ball",2024));
@@ -16,8 +16,8 @@ public class Laba2 {
         System.out.println("------------------");
         found(books,2010);
     }
-    static void found (ArrayList<Book> books, int year){
-        ArrayList<Book> tempBooks = new ArrayList<>();
+    static void found (List<Book> books, int year){
+        List<Book> tempBooks = new ArrayList<>();
         for (Book el:books)
             if (el.getYear()<year)
                 tempBooks.add(el);
@@ -25,7 +25,7 @@ public class Laba2 {
         Collections.sort(tempBooks,compName);
         print(tempBooks);
     }
-    static void print (ArrayList<Book> books){
+    static void print (List<Book> books){
         for(Book book:books)
             System.out.println(book);
     }
