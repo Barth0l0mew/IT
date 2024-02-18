@@ -59,6 +59,7 @@ public class UndoRedo extends JFrame {
                    ListSelectionModel sm = list.getSelectionModel();
                    sm.clearSelection();                     // clears the selection
                    sm.setSelectionInterval(0, 0);
+                   index=0;//эту строчку добавили для нового обхода после добавления
                    validate();
                }
            });
@@ -82,11 +83,13 @@ public class UndoRedo extends JFrame {
         public void actionPerformed(ActionEvent e) {
             ListSelectionModel sm = list.getSelectionModel();
             int count = list.getModel().getSize();
-            System.out.println(index);
+
             sm.clearSelection();                     // clears the selection
-            sm.setSelectionInterval(index, index);
-            index++;
+            index++;//
             if (index>count-1) index = count-1;
+            sm.setSelectionInterval(index, index);//перенесли строчку
+            System.out.println(index);
+
             validate();
         }
     }
@@ -98,9 +101,9 @@ public class UndoRedo extends JFrame {
             int count = list.getModel().getSize();
             System.out.println(index);
             sm.clearSelection();                     // clears the selection
-            sm.setSelectionInterval(index, index);
             index--;
             if (index<0) index = 0;
+            sm.setSelectionInterval(index, index);//перенесли строчку
             validate();
         }
     }
