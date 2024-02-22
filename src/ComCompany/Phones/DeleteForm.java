@@ -7,8 +7,10 @@ public class DeleteForm extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private int row;
 
-    public DeleteForm() {
+    public DeleteForm(int row) {
+        this.row=row;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -43,6 +45,8 @@ public class DeleteForm extends JDialog {
 
     private void onOK() {
         // add your code here
+        Phones.model.removeRow(row);
+
         dispose();
     }
 

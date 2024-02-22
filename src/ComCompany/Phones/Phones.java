@@ -15,7 +15,7 @@ public class Phones extends JFrame {
     private JButton addButton;
     private JButton editButton;
     private JButton deletButton;
-    private DefaultTableModel model;
+    public static DefaultTableModel model;
     public static List<Phone> phones = new ArrayList<>();
     static{
         phones.add(new Phone("surname", "name", "address", "phone"));
@@ -49,15 +49,17 @@ public class Phones extends JFrame {
         deletButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteForm dialog = new DeleteForm();
-                dialog.setSize(500, 550);
-                dialog.setLocationRelativeTo(null);
-                dialog.pack();
-                dialog.setTitle("Вы уверены?");
-                dialog.setVisible(true);
                 int row=table.getSelectedRow();
-                model.removeRow(row);
-
+                if (row>=0) {
+                    DeleteForm dialog = new DeleteForm(row);
+                    dialog.setSize(500, 550);
+                    dialog.setLocationRelativeTo(null);
+                    dialog.pack();
+                    dialog.setTitle("Вы уверены?");
+                    dialog.setVisible(true);
+                }
+                //int row=table.getSelectedRow();
+                //model.removeRow(row);
             }
         });
     }
