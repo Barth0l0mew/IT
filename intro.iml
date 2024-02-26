@@ -14,6 +14,12 @@
     <orderEntry type="library" name="google.guava" level="project" />
     <orderEntry type="library" name="jgoodies.common" level="project" />
     <orderEntry type="library" name="jgoodies.forms" level="project" />
+    <orderEntry type="library" name="ini4j" level="project" />
+    <orderEntry type="library" name="javax.xml.bind.jaxb.api" level="project" />
+    <orderEntry type="library" name="javax.activation" level="project" />
+    <orderEntry type="library" name="glassfish.jaxb.core" level="project" />
+    <orderEntry type="library" name="glassfish.jaxb.runtime" level="project" />
+    <orderEntry type="library" name="json" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="d1625236-045d-410b-ab1a-174b9de8eff3" />

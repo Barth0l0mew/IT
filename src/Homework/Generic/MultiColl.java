@@ -36,32 +36,49 @@ public class MultiColl {
                     result+=b;
                 }
             }
-                System.out.println(el +" "+result);
+                //System.out.println(el +" "+result);
             return result;
         });
         System.out.println("---new collection---");
         PriorityQueue<ArrayList<String>> pa = new PriorityQueue<>(comparator2);
+        PriorityQueue<ArrayList<String>> pa2 = new PriorityQueue<>(comparator2);
         addCollection(pa,al);
         addCollection(pa,al3);
         addCollection(pa,al2);
         printCollection(pa);
-
+        pa2.addAll(pa);
         removeCollection(pa,1);
         printCollection(pa);
         removeCollection(pa,1);
         printCollection(pa);
+        outputCollection(pa2);
 
     }
-
-    static <T> void printCollection (Collection<T> t){
+    static <T> void outputCollection (T t){
+        System.out.println("------------Output Collection------------");
+        if (t instanceof Queue) {
+            System.out.println(t.getClass());
+            while (!((Queue<?>) t).isEmpty()){
+                System.out.println(((Queue<?>) t).poll());
+            }
+        }
+        if (t instanceof Set)
+            System.out.println(t.getClass());
+        if (t instanceof List)
+            System.out.println(t.getClass());
+    }
+    static <T>void printCollection (Collection<T> t){
         System.out.println("---------------printCollection-------");
         //System.out.println(t.getClass());
+
         for (T el :t){
             //System.out.println(el.getClass());
             System.out.println(el );
         }
     }
-    static <T,E> void addCollection (Collection<T> t, Collection<E> e){
+    static <T,E> void addCollection (Collection<T> t, E e){
+
+       // System.out.println(e.getClass());
         t.add((T) e);
     }
     static <T> void removeCollection (Collection<T> t,int index){
@@ -72,6 +89,8 @@ public class MultiColl {
             int count=0;
             while (iterator.hasNext()) {
                 T temp= iterator.next();
+
+                //System.out.println(temp.getClass());
                 if (count==index) {
                     System.out.printf("Remove index=%d collection=%s\n",index,temp);
                     iterator.remove();

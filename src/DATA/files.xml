@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book id="1">
+        <title>name book</title>
+        <date>2024-02-26T21:00:39.411+03:00</date>
+    </book>
+    <book id="2">
+        <title>name book2</title>
+        <date>2024-02-26T21:00:39.411+03:00</date>
+    </book>
+</books>
