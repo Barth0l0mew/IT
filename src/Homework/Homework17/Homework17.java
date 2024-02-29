@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Homework17 {
     public static void main(String[] args) {
         System.out.println("Homework 17");
-        String fileName="src/DATA/Homework17.txt";
+        String fileName="src/Homework/Homework17/Homework17.txt";
         ArrayList<String> listText = new ArrayList<>();
         listText.addAll(list(fileName));
         print(listText);
