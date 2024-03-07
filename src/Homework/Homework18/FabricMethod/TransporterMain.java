@@ -1,6 +1,9 @@
 package Homework.Homework18.FabricMethod;
 
-public class Transporter {
+public class TransporterMain {
+    /*
+    Фабричный метод дает простоту создания продуктов
+     */
     public static void main(String[] args) {
         try{
             Logistic logistic = chooseLogistic("truck");

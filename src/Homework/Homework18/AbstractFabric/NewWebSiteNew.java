@@ -3,8 +3,11 @@ package Homework.Homework18.AbstractFabric;
 import Homework.Homework18.AbstractFabric.CppApp.CppCommandFabric;
 import Homework.Homework18.AbstractFabric.WebApp.WebCommandFabric;
 
-public class NewWebSite {
+public class NewWebSiteNew {
     public static void main(String[] args) {
+        /*
+        Абстрактная фабрика решает вопрос простотут солздания связанных продуктов
+         */
         WebCommandFabric webCommandFabric = new WebCommandFabric();
         Developer webDeveloper = webCommandFabric.createDeveloper();
         Tester webTester = webCommandFabric.createTester();
