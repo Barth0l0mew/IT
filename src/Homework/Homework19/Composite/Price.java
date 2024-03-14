@@ -162,7 +162,7 @@ interface TotalSum {
 }
 class Group extends Product{
     private int totalSum=0;
-    private List<Product> list = new ArrayList<Product>();
+    public List<Product> list = new ArrayList<Product>();
     public void Add (Product product){
         list.add(product);
     }
@@ -184,16 +184,27 @@ class Group extends Product{
 
     @Override
     public double Sum() {
-        System.out.println("----Group----");
+//        System.out.println("----Group----");
         int sum=0;
     for (int i=0;i< list.size();i++){
-        if (list.get(i) instanceof Group)
-            sum=0;
+        if (list.get(i) instanceof Group) {
+            sum = 0;
+            System.out.println("----Group----");
+
+        }
         sum+=list.get(i).Sum();
-        if (i==list.size()-1)
-        System.out.println("Total cost group "+sum*0.95);
+       // if (i==list.size()-1)
+        //System.out.println("Total cost group "+sum*0.95);
+        if (list.get(i) instanceof Group) {
+            //System.out.println(((Group) list.get(i)).list.size());
+            if (((Group) list.get(i)).list.size()==1)
+                System.out.println("Total cost group "+sum);
+            else
+                System.out.println("Total cost group "+sum*0.95);
+        }
 
     }
+
     return sum;
     }
 }
