@@ -1,7 +1,5 @@
 package Homework.Homework19.Composite;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.*;
 
 /*
@@ -17,7 +15,12 @@ import java.util.*;
 public class Price {
     public static void main(String[] args) {
         Product closet = new Closet(1,"Closet", CategoryProduct.CLOSET, 1234,DoorType.COUPE);
+        Product closet2 = new Closet(10,"Closet Art", CategoryProduct.CLOSET, 222,DoorType.Glasses);
+        Product closet3 = new Closet(11,"Closet modern", CategoryProduct.CLOSET, 4444,DoorType.COUPE);
+
         Product table = new Table(6,"Table", CategoryProduct.TABlE, 125,3);
+        Product table2 = new Table(26,"Table", CategoryProduct.TABlE, 521,1);
+
         Product chair = new Chair(3,"Chair", CategoryProduct.CHAIR, 1000,true);
 
         System.out.println(closet);
@@ -28,20 +31,23 @@ public class Price {
         Group group3 = new Group();
         Group group4 = new Group();
         group.Add(closet);
-        group.Add(closet);
+        group.Add(closet2);
 
         group2.Add(table);
-        group2.Add(table);
+        group2.Add(table2);
         group2.Add(chair);
-        group4.Add(closet);
+
+        group4.Add(closet3);
+
         group3.Add(group4);
         group3.Add(group);
         group3.Add(group2);
-       // group3.Add(closet);
 
         group3.Sum();
-       // System.out.println(group3.Sum());
+        System.out.println("------Printing the structure group-------");
         group3.print();
+        System.out.println("----Printing product sorted by price------");
+        group3.printTemp();
     }
 }
 interface SumCost {
@@ -79,6 +85,7 @@ class Chair extends Product{
         System.out.println(this.productName);
     }
 
+
     @Override
     public String toString() {
         return "Chair{" +
@@ -111,6 +118,7 @@ class Table extends Product{
         System.out.println(this.productName);
 
     }
+
 
     @Override
     public String toString() {
@@ -156,12 +164,14 @@ class Closet extends Product{
         System.out.println(this.productName);
 
     }
+
 }
 interface TotalSum {
     int total (Product product);
 }
 class Group extends Product{
     private int totalSum=0;
+    public    List<Product> tempList = new ArrayList<>();
     public List<Product> list = new ArrayList<Product>();
     public void Add (Product product){
         list.add(product);
@@ -179,32 +189,38 @@ class Group extends Product{
 
         }
             //System.out.println(el.print());
-
     }
+    public void printTemp (){
+    List<Product> temp = new ArrayList<>();
+        for (Product el:list){
+            //System.out.println(((Group)el).list);
+            //System.out.println(((Group)el).getClass());
+            temp.addAll(((Group)el).list);
+        }
+    Comparator<Product> compProduct = Comparator.comparing(obj->obj.cost);
+        Collections.sort(temp,compProduct);
+        temp.forEach(el-> System.out.println(el));
+    }
+
 
     @Override
     public double Sum() {
-//        System.out.println("----Group----");
         int sum=0;
     for (int i=0;i< list.size();i++){
         if (list.get(i) instanceof Group) {
             sum = 0;
             System.out.println("----Group----");
-
         }
         sum+=list.get(i).Sum();
-       // if (i==list.size()-1)
-        //System.out.println("Total cost group "+sum*0.95);
         if (list.get(i) instanceof Group) {
-            //System.out.println(((Group) list.get(i)).list.size());
             if (((Group) list.get(i)).list.size()==1)
                 System.out.println("Total cost group "+sum);
             else
-                System.out.println("Total cost group "+sum*0.95);
+                System.out.printf("Total cost group %.3f\n",(sum*0.95));
         }
 
     }
-
     return sum;
+
     }
 }
