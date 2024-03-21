@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class INTStreams {
     public static void main(String[] args) {
@@ -68,5 +69,14 @@ public class INTStreams {
         IntStream.iterate(2,i->i*2)
                 .limit(10)
                 .forEach(i-> System.out.print(i+" "));
+        //первое число сумма цифр которого равна 20
+        Stream.iterate(new int[]{1,1},x->new int[]{++x[0],x[1]=sum(Integer.toString(x[0]).chars().toArray())})
+                .filter(x->x[1]==20)
+                .forEach(x-> System.out.println(x));
+    }
+    public static int sum(int[] arr) {
+        int result = 0;
+        for (int a : arr) result += a - '0';
+        return result;
     }
 }
