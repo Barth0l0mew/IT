@@ -119,6 +119,26 @@ public class ControlTest {
                );
 
     }
+    @Test
+    public void test1c() throws IOException {
+        // Выбрать мужчин от 20 до 30 лет
+        List<Person> mans = Person.persons.stream()
+                .filter(p->p.getAge()>=20&&p.getAge()<=30&&p.getSex()== Person.Sex.MAN).collect(Collectors.toList());
+        // Найти средний возраст среди мужчин
+        //  Double meanAge =
+        Person.persons.stream ().filter(i->i.getSex()==Person.Sex.MAN).mapToInt(i->i.getAge()).average().getAsDouble();
+        // Найти количество трудоспособных (т.е. от 18 лет и учитывая что женщины выходят в 55 лет, а мужчина в 60)
+        long count = Person.persons.stream()
+            .filter(i->i.getAge()>=18)
+            .filter(p->(p.getSex()==p.getSex().WOMAN&&p.getAge()<55)||p.getSex()==p.getSex().MAN && p.getAge()<60).count();
+        // Найти человека с максимальным возрастом
+        Person Older = Person.persons.stream()
+            .max((p1,p2)->p1.getAge().compareTo(p2.getAge())).get();
+        // Отсортировать по имени в обратном алфавитном порядке
+        List<Person>byName =Person.persons.stream().sorted((p1,p2)->-p1.getName().compareTo(p2.getName()))
+            .collect(Collectors.toList());
+
+    }
 
     @Test
     public void test2() {
