@@ -69,12 +69,12 @@ public class SeeBattle {
 
 
         while (true ){
-            System.out.println("Для выхода введите координату больше 10");
+            System.out.println("Для выхода введите координату больше 10 или меньше 1");
             System.out.print("input x=");
             x= scanner.nextInt()-1;
             System.out.print("input y=");
             y=scanner.nextInt()-1;
-            if (x>=10|| y>=10){
+            if ((x<0 || x>9) || (y<0 ||y>9)){
                 System.out.println("Exit");
                 break;
             }
@@ -128,12 +128,12 @@ public class SeeBattle {
         int count=1;
 
         while (true ){
-            System.out.println("Для выхода введите координату больше 10");
+            System.out.println("Для выхода введите координату больше 10 или меньше 1");
             System.out.print("input x=");
             x= scanner.nextInt()-1;
             System.out.print("input y=");
             y=scanner.nextInt()-1;
-            if (x>=10|| y>=10){
+            if ((x<0 || x>9) || (y<0 ||y>9)){
                 System.out.println("Exit");
                 break;
             }
@@ -185,13 +185,14 @@ public class SeeBattle {
         Scanner scanner = new Scanner(System.in);
         int x;
         int y;
-        while (ship<16){
-            System.out.println("Для выхода введите координату больше 10");
+        while (true){
+            System.out.println("Для выхода введите координату больше 10 или меньше 1");
             System.out.print("input x=");
             x= scanner.nextInt()-1;
             System.out.print("input y=");
             y=scanner.nextInt()-1;
-            if (x>=10|| y>=10){
+            // if (x>=10|| y>=10){
+            if ((x<0 || x>9) || (y<0 ||y>9)){
                 System.out.println("Exit");
                 break;
             }
@@ -202,8 +203,12 @@ public class SeeBattle {
             }
             print(hit);
             System.out.println(ship);
+            if (ship==16){
+                System.out.println("Все корабли убиты за "+count+ " ходов");
+                break;
+            }
         }
-        System.out.println("Все корабли убиты за "+count);
+
     }
 
 }
