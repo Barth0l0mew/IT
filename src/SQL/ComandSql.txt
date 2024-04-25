@@ -1,0 +1,21 @@
+//создаем таблицу Mail
+create table Mail(mail String);
+//вывод схемы таблицы 
+.schema Mail 
+//записываем в таблицу Mail в столбец mail значение mail@mail.com
+insert into Mail (mail) values('mail@mail.com');
+//вывод данных
+select * from Mail;
+//формарирование в виде таблице 
+.mode box
+//создание Dump БД
+.output dump.sql
+.dump
+//удаление таблицы
+drop table Mail;
+//востановление с dump
+.read dump.sql
+//выбрать количество всех записей из таблицы Mail 
+select count(*) from Mail;
+//вывести все значение где в таблице Mail поля mail начинается на m и дальше любые значения 
+select * from Mail where mail like 'm%';
