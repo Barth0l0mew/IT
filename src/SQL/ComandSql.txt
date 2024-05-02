@@ -22,7 +22,7 @@ select * from Mail where mail like 'm%';
 //добавление столбца
 alter table Mail add id;
 
-
+https://app.sqldbm.com/CreateNew/
 https://www.db-fiddle.com/
 database .ddl
 create table mails(id integer primary key autoincrement, mail text);
@@ -43,3 +43,20 @@ insert into users_info(users_id,mails_phones_id) values (1,1),(1,2),(2,3);
 select Mail.mail, Phones.phone from Mail,Phones,mail_phones where mail_phones.mail_id=Mail.id and mail_phones.phone_id=Phones.id;
 //вывод с использованием псевданима 
  select m.mail, p.phone from Mail as m ,Phones as p,mail_phones as mp where mp.mail_id=m.id and mp.phone_id=p.id;
+ 
+ //join поиск по всем таблицам 
+ select name, mail, phone from users 
+inner join users_info on users.id=users_info.id 
+inner join mail_phones on users_info.mails_phones_id=mail_phones.id 
+inner join mail on mail_phones.mail_id=mail.id
+inner join phones on mail_phones.phone_id=phones.id; 
+
+
+// тоже самое + поиск gmail
+select name, mail, phone from users 
+inner join users_info on users.id=users_info.id 
+inner join mail_phones on users_info.mails_phones_id=mail_phones.id 
+inner join mail on mail_phones.mail_id=mail.id
+inner join phones on mail_phones.phone_id=phones.id
+where mail like '%gmail%'; 
+
