@@ -2,31 +2,44 @@
 --Напишите запрос в sql, чтобы отобразить id, имя, должность, дату найма и стаж работы менеджеров.
 --Напишите запрос в sql, чтобы перечислить id, имя, зарплату, название отдела всех MANAGER и ANALYST, работающих в SYDNEY, PERTH.
 --Напишите запрос в sql, чтобы перечислить всех сотрудников 2 и 3 классов.
+select * from employer  where salary> (select min_salary from salary_grade where grade=2)
+   and salary< (select max_salary from salary_grade where grade=3);
 
---Напишите запрос в sql, чтобы перечислить сведения о сотрудниках, чья зарплата превышает зарплату JONAS.
---Напишите запрос в sql, чтобы перечислить сотрудников, которые работают в той же должности, что и FRANK.
++ --Напишите запрос в sql, чтобы перечислить сведения о сотрудниках, чья зарплата превышает зарплату JONAS.
+select name, job, salary from employer where salary>(select salary from employer where name like 'JONAS');
++ --Напишите запрос в sql, чтобы перечислить сотрудников, которые работают в той же должности, что и FRANK.
+select name, job, salary from employer where job= (select job from employer where name like 'frank') and not name like 'frank';
 --Кого наняли раньше ADELYN?
---Напишите запрос на языке sql, чтобы составить список сотрудников отдела с id=2001,
++ --Напишите запрос на языке sql, чтобы составить список сотрудников отдела с id=2001,
+select employer.id, name, job, salary from employer where department_id=(select department.id from department where department.id=2001);
 
 -- которые работают в должностях, аналогичных отделу 1001.
---Напишите запрос в sql, чтобы найти информацию о наиболее высокооплачиваемом сотруднике
---Напишите запрос в sql, чтобы найти наиболее высокооплачиваемого сотрудника в отделе marketing
++ --Напишите запрос в sql, чтобы найти информацию о наиболее высокооплачиваемом сотруднике
+select employer.id, name, max( salary) as salary , job from employer;
++ --Напишите запрос в sql, чтобы найти наиболее высокооплачиваемого сотрудника в отделе marketing
+select employer.id, name, job, max (salary) from employer where department_id=(select department.id from department where department.name='MARKETING');
 --Напишите запрос в sql, чтобы найти сотрудника, который был нанят первым в 1991 году.
 
---суммарная зарплата всех менеджеров (MANAGER)
++ --суммарная зарплата всех менеджеров (MANAGER)
 select sum(salary) from employer where job like 'manager';
---Напишите запрос в SQL, чтобы отобразить общую зарплату сотрудников, относящихся к 3 классу.
---Перечислить сотрудников в отделе 1001, чья зарплата превышает среднюю зарплату сотрудников в отделе 2001
++ --Напишите запрос в SQL, чтобы отобразить общую зарплату сотрудников, относящихся к 3 классу.
+select sum( salary) from employer  where salary> (select min_salary from salary_grade where grade=3)
+   and salary< (select max_salary from salary_grade where grade=3);
++ --Перечислить сотрудников в отделе 1001, чья зарплата превышает среднюю зарплату сотрудников в отделе 2001
 select name, salary from employer where department_id=1001 and salary >(select avg(salary) from employer where department_id=2001);
---Напишите запрос в SQL, чтобы отобразить сотрудников, имя менеджера которых JONAS
++ --Напишите запрос в SQL, чтобы отобразить сотрудников, имя менеджера которых JONAS
 select * from employer where salary>(select salary from employer where name='JONAS'); 
 
---Напишите запрос в SQL, чтобы перечислить сотрудников, которые не работают в отделе MARKETING
---Напишите запрос в SQL, чтобы перечислить имена сотрудников, которые получают самую высокую зарплату в каждом отделе
++ --Напишите запрос в SQL, чтобы перечислить сотрудников, которые не работают в отделе MARKETING
+ select id, name, job, department_id from employer where  not department_id = (select id from department where name like 'MARKETING');
++ --Напишите запрос в SQL, чтобы перечислить имена сотрудников, которые получают самую высокую зарплату в каждом отделе
+select employer.name, max(salary), department.name from employer join department on employer.department_id=department.id  group by department_id ;
 --Напишите запрос в SQL, чтобы перечислить сотрудников, чья зарплата меньше, чем зарплата его менеджера,
 --но больше, чем зарплата любого другого менеджера.
 
 --Напишите запрос в SQL, чтобы перечислить сотрудников и среднюю зарплату сотрудников по отделу, где они работают.
 --Напишите запрос в SQL, чтобы получить название отдела, где количество сотрудников равно количеству символов в названии отдела
 --Напишите запрос в SQL, чтобы перечислить имена менеджеров отдела, в котором работает максимальное количество сотрудников
---Напишите запрос в SQL, чтобы найти отдел, где нет сотрудников 
+
+--Напишите запрос в SQL, чтобы найти отдел, где нет сотрудников
+select department.name from department full join employer on department.id=employer.department_id where employer.name is null ; 
