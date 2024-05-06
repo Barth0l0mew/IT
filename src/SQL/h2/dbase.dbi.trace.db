@@ -1,0 +1,126 @@
+2024-05-06 20:51:03.168000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE character (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null,\000d\000a    race_id integer,\000d\000a    class_id integer)"; ожидалось "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE character (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null,\000d\000a    race_id integer,\000d\000a    class_id integer)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE character (
+    id integer not null primary key autoincrement,
+    name text not null,
+    race_id integer,
+    class_id integer) [42001-224]
+2024-05-06 20:51:03.177000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE race (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null unique)"; ожидалось "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE race (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null unique)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE race (
+    id integer not null primary key autoincrement,
+    name text not null unique) [42001-224]
+2024-05-06 20:51:03.179000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE class (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null UNIQUE)"; ожидалось "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE class (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null UNIQUE)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE class (
+    id integer not null primary key autoincrement,
+    name text not null UNIQUE) [42001-224]
+2024-05-06 20:51:03.181000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE item (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null UNIQUE,\000d\000a    price integer default 0, weight REAL,\000d\000a    rarity integer CHECK(rarity between 1 and 5) default 1,\000d\000a    maximum integer default 1)"; ожидалось "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE item (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    name text not null UNIQUE,\000d\000a    price integer default 0, weight REAL,\000d\000a    rarity integer CHECK(rarity between 1 and 5) default 1,\000d\000a    maximum integer default 1)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE item (
+    id integer not null primary key autoincrement,
+    name text not null UNIQUE,
+    price integer default 0, weight REAL,
+    rarity integer CHECK(rarity between 1 and 5) default 1,
+    maximum integer default 1) [42001-224]
+2024-05-06 20:51:03.184000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE inventory (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    character_id integer,\000d\000a    item_id integer)"; ожидалось "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE inventory (\000d\000a    id integer not null primary key [*]autoincrement,\000d\000a    character_id integer,\000d\000a    item_id integer)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE inventory (
+    id integer not null primary key autoincrement,
+    character_id integer,
+    item_id integer) [42001-224]
+2024-05-06 20:51:52.075000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE item (\000d\000a    id integer not null primary key auto_increment,\000d\000a    name text not null UNIQUE,\000d\000a    price integer default 0, weight REAL,\000d\000a    rarity integer CHECK(rarity between 1 and 5) [*]default 1,\000d\000a    maximum integer default 1)"; ожидалось "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE item (\000d\000a    id integer not null primary key auto_increment,\000d\000a    name text not null UNIQUE,\000d\000a    price integer default 0, weight REAL,\000d\000a    rarity integer CHECK(rarity between 1 and 5) [*]default 1,\000d\000a    maximum integer default 1)"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE item (
+    id integer not null primary key auto_increment,
+    name text not null UNIQUE,
+    price integer default 0, weight REAL,
+    rarity integer CHECK(rarity between 1 and 5) default 1,
+    maximum integer default 1) [42001-224]
+2024-05-06 20:54:58.956000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "RASE" не найдена
+Table "RASE" not found; SQL statement:
+select * from rase [42102-224]
+2024-05-06 20:55:02.530000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "RASE" не найдена
+Table "RASE" not found; SQL statement:
+select * from rase [42102-224]
+2024-05-06 20:55:44.078000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "RASE" не найдена
+Table "RASE" not found; SQL statement:
+SELECT * FROM RASE [42102-224]
+2024-05-06 21:00:41.569000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "RACE.NAME" не найден
+Column "RACE.NAME" not found; SQL statement:
+select character.name, race.name, class.name from character [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:190)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.lang.Thread.run(Unknown Source)
+2024-05-06 21:05:59.085000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select race.name, count(*) class[*].name c from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id group by race.name"
+Syntax error in SQL statement "select race.name, count(*) class[*].name c from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id group by race.name"; SQL statement:
+select race.name, count(*) class.name c from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id group by race.name [42000-224]
+2024-05-06 21:09:49.451000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "CHARACTER.NAME" должен быть в предложении GROUP BY
+Column "CHARACTER.NAME" must be in the GROUP BY list; SQL statement:
+select character.name, count (*) from character inner join inventory on character.id=inventory.character_id [90016-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:266)
+	at org.h2.command.query.Select.updateAgg(Select.java:539)
+	at org.h2.command.query.Select.gatherGroup(Select.java:522)
+	at org.h2.command.query.Select.queryGroup(Select.java:488)
+	at org.h2.command.query.Select.queryWithoutCache(Select.java:828)
+	at org.h2.command.query.Query.queryWithoutCacheLazyCheck(Query.java:197)
+	at org.h2.command.query.Query.query(Query.java:520)
+	at org.h2.command.query.Query.query(Query.java:483)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:252)
+	at org.h2.command.Command.executeQuery(Command.java:192)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:257)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:190)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.lang.Thread.run(Unknown Source)
+2024-05-06 21:19:40.832000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id full join item on inventory.item_id=item.id group by character.id"
+Syntax error in SQL statement "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id full join item on inventory.item_id=item.id group by character.id"; SQL statement:
+select character.name, count (*) from character  full join inventory on character.id=inventory.character_id full join item on inventory.item_id=item.id group by character.id [42000-224]
+2024-05-06 21:19:50.984000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id innerjoin item on inventory.item_id=item.id group by character.id"
+Syntax error in SQL statement "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id innerjoin item on inventory.item_id=item.id group by character.id"; SQL statement:
+select character.name, count (*) from character  full join inventory on character.id=inventory.character_id innerjoin item on inventory.item_id=item.id group by character.id [42000-224]
+2024-05-06 21:19:53.034000+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id inner join item on inventory.item_id=item.id group by character.id"
+Syntax error in SQL statement "select character.name, count (*) from character  full [*]join inventory on character.id=inventory.character_id inner join item on inventory.item_id=item.id group by character.id"; SQL statement:
+select character.name, count (*) from character  full join inventory on character.id=inventory.character_id inner join item on inventory.item_id=item.id group by character.id [42000-224]

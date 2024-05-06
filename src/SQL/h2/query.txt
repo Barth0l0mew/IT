@@ -1,0 +1,24 @@
+//вывести название расыб название класса название персонажа
+select character.name, race.name, class.name from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id;
+отсортировка по 
+
+select character.name, race.name, class.name from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id order by character.name;
+
+//сколько персонажей в расе
+select race.name, count(*)  c from character inner join race on character.race_id=race.id inner join class on character.class_id=class.id group by race.name;
+--Сколько у каждого персонажа вещей в инвентаре?
+select character.name, count (*) from character inner join inventory on character.id=inventory.character_id inner join item on inventory.item_id=item.id group by character.name;
+select character.name, count (*) from character  left join inventory on character.id=inventory.character_id left join item on inventory.item_id=item.id group by character.id order by character.name;
+
+--У кого из эльфов имя начинается на "T"?
+select character.name, race.name from character inner join race on character.race_id=race.id where character.name like 'T%' and race.name='Elves';
+
+--У кого из воинов самое короткое имя?
+--Вывести список всех людей-лучников
+--Какой класс воинов самый распространенный у гномов?
+--Вывести количество персонажей в каждой расе
+--Сколько персонажей не принадлежат к известной расе?
+--У кого из гномов есть серебро?
+--Каждому гному раздать по серебряной руде (Silver ore)
+--Вывести по 3 самых тяжелых вещи в инвентаре для каждого персонажа
+--Удалить из инвентаря вещи, если их количество превышает 30 для одного персонажа 

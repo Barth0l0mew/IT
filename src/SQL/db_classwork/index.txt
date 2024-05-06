@@ -1,0 +1,18 @@
+//индексация. создаем индексы
+create index idx_name  on employer(name);
+.indexes
+//или
+.indices
+
+//удаление индексов
+drop idx_name;
+//создаем индексы для salary
+ create index idx_salary on employer(salary);
+ //составной индекс
+ create index idx_name_salary on employer(name,salary);
+ //выводимс всех сотрудников
+ select name from employer;
+ //объясните есть индексация
+ explain query plan select name from employer;
+ //ответ --SCAN employer USING COVERING INDEX idx_name используется индексация
+ 

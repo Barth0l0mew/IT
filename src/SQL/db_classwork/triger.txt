@@ -1,0 +1,20 @@
+//создаем тригер которые работает на insert который будет создавть сотрудника в соновной таблице и затем в вспомогательной
+//создаме вспомогательную таблицу
+create table new_employer (id integer not null primary key autoincrement,
+                           name varchar(15) not null);
+//вывод информатиыной части бд
+select * from sqlite_master;
+
+//удаление времнный таблице						  
+drop table if exists new_employer;
+drop trigger if exists trg_insert_employer;						   
+//создаем триггер trg_insert_employer - имя тригера, after -после или before - перед,  insert, update, drop - действие которые отслеживаются
+// new - новые данные, old-старые данные				   
+create trigger trg_insert_employer after insert  on employer
+begin
+insert into new_employer(name) values(new.name);
+end;
+//добавляем нового сотрудника и срабатывает тригерр
+INSERT INTO employer VALUES(68339,'KAYLING3','PRESIDENT',NULL,'1991-11-18',6000.0,NULL,1001);
+//и в вспомогтальной таблице появилася запись KAYLING3
+select * from new_employer; 

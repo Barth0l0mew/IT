@@ -1,9 +1,23 @@
---Напишите запрос в sql, чтобы отобразить id и имена менеджеров всех сотрудников.
++ --Напишите запрос в sql, чтобы отобразить id и имена менеджеров всех сотрудников.
+select distinct e1.id, e1.name  from employer as e1
+inner join employer as e2 where e1.id=e2.manager_id;
+
+второй вариант
+select id,name from employer
+where id in (select manager_id from employer); 
+
+
 --Напишите запрос в sql, чтобы отобразить id, имя, должность, дату найма и стаж работы менеджеров.
---Напишите запрос в sql, чтобы перечислить id, имя, зарплату, название отдела всех MANAGER и ANALYST, работающих в SYDNEY, PERTH.
++ --Напишите запрос в sql, чтобы перечислить id, имя, зарплату, название отдела всех MANAGER и ANALYST, работающих в SYDNEY, PERTH.
+select employer.id, employer.name, employer.job,employer.salary, department.name, department.location from employer
+	join department on department.id=employer.department_id where (job like 'manager' or job like 'analyst') and ( location like 'sydney' or location like 'perth'); 
 --Напишите запрос в sql, чтобы перечислить всех сотрудников 2 и 3 классов.
 select * from employer  where salary> (select min_salary from salary_grade where grade=2)
    and salary< (select max_salary from salary_grade where grade=3);
+   
+   select e.id, e.name, e.salary, s.grade from employer as e 
+   inner join department as d on e.department_id=d.id
+	inner join salary_grade as s on e.salary between s.min_salary and s.max_salary where s.grade in (2,3); 
 
 + --Напишите запрос в sql, чтобы перечислить сведения о сотрудниках, чья зарплата превышает зарплату JONAS.
 select name, job, salary from employer where salary>(select salary from employer where name like 'JONAS');
@@ -38,9 +52,26 @@ select employer.name, max(salary), department.name from employer join department
 --Напишите запрос в SQL, чтобы перечислить сотрудников, чья зарплата меньше, чем зарплата его менеджера,
 --но больше, чем зарплата любого другого менеджера.
 
---Напишите запрос в SQL, чтобы перечислить сотрудников и среднюю зарплату сотрудников по отделу, где они работают.
++ --Напишите запрос в SQL, чтобы перечислить сотрудников и среднюю зарплату сотрудников по отделу, где они работают.
+select e1.id, name, salary, t.mean 
+from employer as e1
+inner join (select e2.department_id, avg(salary) as mean 
+from employer as e2 group by e2.department_id) as t
+where t.department_id=e1.department_id; 
+
+второй вариант создаем временную таблицу 
+drop table salary;
+create temp table salary 
+as select e2.department_id, avg(salary) as mean 
+from employer as e2
+group by e2.department_id; 
+
+select e1.id, name, salary, t.mean from employer as e1
+inner join salary as t on t.department_id=e1.department_id;
+
+
 --Напишите запрос в SQL, чтобы получить название отдела, где количество сотрудников равно количеству символов в названии отдела
 --Напишите запрос в SQL, чтобы перечислить имена менеджеров отдела, в котором работает максимальное количество сотрудников
 
---Напишите запрос в SQL, чтобы найти отдел, где нет сотрудников
++ --Напишите запрос в SQL, чтобы найти отдел, где нет сотрудников
 select department.name from department full join employer on department.id=employer.department_id where employer.name is null ; 

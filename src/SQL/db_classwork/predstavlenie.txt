@@ -1,0 +1,13 @@
+ 
+ 
+ представление создаем таблицу, храниться только в оперативной памяти, она обновляется
+ //удалить представление 
+ drop view emp_dep; 
+ //создаем представление
+ create view emp_dep as select e.name, e.job, d.name as department from employer as e
+inner join department as d on e.department_id=d.id;
+//добавляем новую строчку 
+INSERT INTO employer VALUES(68329,'KAYLING2','PRESIDENT',NULL,'1991-11-18',6000.0,NULL,1001);
+//проверяем представление
+select * from emp_dep;
+//впредставление список обновляется
