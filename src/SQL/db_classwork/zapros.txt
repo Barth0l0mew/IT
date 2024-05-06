@@ -18,7 +18,8 @@ select employer.id, name, job, salary from employer where department_id=(select 
 select employer.id, name, max( salary) as salary , job from employer;
 + --Напишите запрос в sql, чтобы найти наиболее высокооплачиваемого сотрудника в отделе marketing
 select employer.id, name, job, max (salary) from employer where department_id=(select department.id from department where department.name='MARKETING');
---Напишите запрос в sql, чтобы найти сотрудника, который был нанят первым в 1991 году.
++ --Напишите запрос в sql, чтобы найти сотрудника, который был нанят первым в 1991 году.
+select id, name,job, manager_id, min(hire_date) as hire_date,salary,commission,department_id from employer where hire_date like '1991%' ;
 
 + --суммарная зарплата всех менеджеров (MANAGER)
 select sum(salary) from employer where job like 'manager';
