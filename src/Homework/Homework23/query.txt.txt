@@ -1,0 +1,27 @@
+select *from country;
+select * from district;
+select * from country_district;
+select * from mountain;
+select  * from location_mountain;
+select  * from climping;
+select * from tourist;
+select * from time_climping;
+
+--1. вывести всех туристов которые подымались  на горы
+select  first_name, second_name, address, mountain_name, height  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist;
+--2. сколько человек поднималась на горы
+select  count(first_name) as climping, mountain_name, height  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist group by mountain.mountain_name;
+--3. вывести горы высотой больше 8500 м
+select mountain_name, height from  mountain where height > 8500;
+--4. данные людей подымались после определенной даты
+select  first_name, second_name, address, mountain_name, height, time_start, time_end  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist join time_climping on time_climping.id_time_climping=climping.time_climping_id where time_start > '2022-01-03 00:00:00';  
+--5. кто подымался на самую высокую гору
+select  first_name, second_name, address, mountain_name, height  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist where height = (select max(height) from mountain) ;
+--6.список гор на которые не подымались 
+select mountain_name, height  from mountain left join location_mountain on id_mountain=mountain_id left  join climping on location_mountain.id_location_mountain=climping.location_mountain_id left join tourist on climping.tourist_id=tourist.id_tourist where first_name is null; 
+--7. список гор находящихся в одной стране Nepal
+select mountain_name from mountain join location_mountain on location_mountain.mountain_id=mountain.id_mountain join country_district on location_mountain.country_district_id=country_district.id_country_district join country on country_district.country_id=country.id_country where country.country_name like 'Nepal'; 
+--8.расчет времени восхождения на гору 
+select  first_name, second_name, address, mountain_name, height, TIMESTAMPDIFF(hour, time_start, time_end) as hour_climping  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist join time_climping on time_climping.id_time_climping=climping.time_climping_id; 
+--9 кто подымался на гору К2
+select  first_name, second_name, address, mountain_name, height  from mountain join location_mountain on id_mountain=mountain_id join climping on location_mountain.id_location_mountain=climping.location_mountain_id join tourist on climping.tourist_id=tourist.id_tourist where mountain_name  like 'K2' ;
