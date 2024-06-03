@@ -1,0 +1,36 @@
+--1 Вывести покупателей, не указавших свою компанию
+ select firstname, lastname from customers where company is null;
+--2 Вывести название самой короткой и самой длинной фонограммы
+select name from tracks  
+where length(name)=(select max(length(name)) from tracks ) 
+or length(name)= (select min(length(name)) from tracks );
+--3 Вывести названия альбомов, имя композитора которых включает 'Smith'
+select distinct (albums.title), tracks.composer from tracks 
+inner join albums on tracks.albumid=albums.albumid  where tracks.composer like '%Smith%';
+--4 Вывести названия альбомов, в которые входит слово 'Princess'
+select * from albums where title like '%Princess%'; 
+--5 Вывести название альбома с самым длинным списком композиторов
+select distinct (albums.title), tracks.composer from tracks 
+inner join albums on tracks.albumid=albums.albumid 
+ where length (tracks.composer) =(select max(length(composer)) from tracks);
+--6 Вывести все счета об оплате за январь 2010 г.
+select * from invoices where invoicedate between '2010-01-01' and '2010-01-31';
+--7 Для исполнителя 'Queen' вывести название трека и альбома
+select albums.title, tracks.name, tracks.composer from tracks inner join albums on tracks.albumid=albums.albumid  where tracks.composer like '%Queen%';
+--8 Вывести название трека, которое включает слово 'Man'
+ select * from tracks where name like 'Man %' or name like '% Man' or name like '% Man %' ;
+--9 Вывести 10 треков, название которых заканчивается цифрами\
+select * from tracks where name glob '*[0-9]'  limit 10;
+--10 Вывести альбомы и их исполнителей. 
+ select distinct (albums.title), tracks.composer from tracks inner join albums on tracks.albumid=albums.albumid ;
+--11Вывести исполнителей безымянных альбомов
+select tracks.composer from tracks full join albums on tracks.albumid=albums.albumid  where albums.title is null;
+--12Вывести треки, названия альбомов группы 'AC/DC'
+select albums.title, tracks.name, tracks.composer from tracks inner join albums on tracks.albumid=albums.albumid  where tracks.composer like '%AC/DC%';
+--13 Вывести список исполнителей, не имеющих альбомов
+select artists.name from artists inner join albums on albums.artistid=artists.artistid where albums.title is null;
+Вывести список служащих, живущих в одинаковых городах (земляков). Использовать self join.
+Вывести названия альбомов и количество треков
+Для каждого альбома вывести минимальную, максимальную и среднюю продолжительность треков
+Количество треков по типу медиа и по жанрам
+Вывести альбомы продолжительностью более 2 часов 
